@@ -2,11 +2,16 @@ mod fov_dummy;
 mod fov_recursive_shadowcasting;
 mod fov_restrictive;
 
+#[cfg(feature="serde")]
+use serde;
+
 pub use fov_dummy::*;
 pub use fov_recursive_shadowcasting::*;
 pub use fov_restrictive::*;
 
 /// Some basic structure to store map cells' transparency and fov computation result
+#[cfg(feature="serde")]
+#[derive(serde::Serialize, serde::Deserialize)]
 pub struct MapData {
     /// width of the map in cells
     pub width: usize,
